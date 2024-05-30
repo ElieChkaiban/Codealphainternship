@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>To Do List</title>
+    </head>
+    
+    
+    
+    <body>
+        <div class="container">
+            <div class="to-do">
+            <h1>To Do List</h1>
+            <br>
+            
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add task">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <ul id="list-container">
+              
+            </ul>
+            
+
+        </div>
+        </div>
+        
+    </body>
+    <script>
+        function addTask() {
+            var input = document.getElementById("input-box");
+            var listContainer = document.getElementById("list-container");
+            var newLi = document.createElement("li");
+            var newSpan = document.createElement("span");
+            newSpan.className = "circle";
+            newLi.appendChild(newSpan);
+            newLi.appendChild(document.createTextNode(input.value));
+            listContainer.appendChild(newLi);
+            input.value = "";
+            newLi.addEventListener("click", toggleDone);
+        }
+        function toggleDone(event) {
+            var li = event.target.parentNode;
+            li.classList.toggle("done");
+        }
+    </script>
+</html>
